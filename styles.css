@@ -1,0 +1,339 @@
+/* ============================================
+   ANATOMY OF A MEMORY — styles.css
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #e5e5e5;
+  transition: background-color 0.7s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'IM Fell English', Georgia, serif;
+}
+
+/* Atmosphere ON — warm cream page background */
+body.atmosphere-on {
+  background-color: #fbf5ea;
+}
+
+/* ---- LANDING PAGE ---- */
+.landing {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5e5e5;
+  z-index: 100;
+  transition: opacity 0.9s ease;
+}
+
+.landing-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+  max-width: 520px;
+  padding: 40px;
+}
+
+.landing-title {
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #1a1a1a;
+}
+
+.landing-title em {
+  font-style: italic;
+}
+
+.landing-of {
+  font-size: 30px;
+  font-style: normal;
+}
+
+.landing-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14.5px;
+  color: #3a3a3a;
+  line-height: 1.7;
+}
+
+.enter-btn {
+  margin-top: 16px;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #1a1a1a;
+  background: transparent;
+  border: 1px solid #1a1a1a;
+  padding: 10px 32px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.enter-btn:hover {
+  background: #1a1a1a;
+  color: #e5e5e5;
+}
+
+/* Hidden state for experience (fades in) */
+.layout.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.9s ease;
+}
+
+.layout.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Landing fade out */
+.landing.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---- PAGE LAYOUT ---- */
+
+.layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 80px;
+  padding: 52px 60px;
+  width: 100%;
+  max-width: 1300px;
+}
+
+/* ---- LEFT: title + photo ---- */
+.left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;             /* more breathing room title → photo */
+  flex: 0 0 auto;
+  min-width: 0;
+  align-self: flex-start;
+  padding-top: 0;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #1a1a1a;
+  white-space: nowrap;
+}
+
+.title em {
+  font-style: italic;
+}
+
+.title-of {
+  font-size: 22px;
+  font-style: normal;
+}
+
+/* Photo area: contains photo + floating music notes */
+.photo-area {
+  position: relative;
+  width: 620px;
+  flex-shrink: 0;
+}
+
+/* Music notes: float top-right of photo, hidden by default */
+.music-notes {
+  position: absolute;
+  top: -70px;
+  right: -30px;
+  width: 130px;
+  display: none;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.music-notes.visible {
+  display: block;
+}
+
+/* Photo: fixed width, no overflow clipping so notes can float */
+.photo-wrap {
+  width: 620px;
+}
+
+.photo-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---- CAPTION below photo ---- */
+.caption {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #3a3a3a;
+  margin-top: 18px;
+  min-height: 1.4em;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  letter-spacing: 0.01em;
+  max-width: 620px;
+  text-align: center;
+  width: 100%;
+}
+
+.caption.visible {
+  opacity: 1;
+}
+
+/* ---- RIGHT: controls ---- */
+.right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  flex: 0 0 260px;
+  min-width: 240px;
+  padding-top: 8px;
+  align-self: center;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13.5px;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* ---- TOGGLES ---- */
+.toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.toggle-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* ---- CHECKBOX (square, Figma-style) ---- */
+.check-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.check-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid #444;
+  background: transparent;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '';
+  display: block;
+  width: 9px;
+  height: 7px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpolyline points='1,4 4,7 9,1' fill='none' stroke='%23222' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Ghost checkmark on hover (only when unchecked) */
+.check-label:hover input[type="checkbox"]:not(:checked) + .checkmark::after {
+  content: '';
+  display: block;
+  width: 9px;
+  height: 7px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpolyline points='1,4 4,7 9,1' fill='none' stroke='%23222' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.25;
+}
+
+.layer-name {
+  font-size: 13.5px;
+  color: #1a1a1a;
+}
+
+/* ---- VOLUME SLIDER ---- */
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vol-icon {
+  font-size: 11px;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.vol-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 210px;
+  height: 1.5px;
+  background: #1a1a1a;
+  border-radius: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.vol-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 9px;
+  height: 9px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.vol-slider::-moz-range-thumb {
+  width: 9px;
+  height: 9px;
+  background: #1a1a1a;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
