@@ -152,7 +152,7 @@ function getKey() {
   return (state.atmosphere ? '1' : '0')
        + (state.food       ? '1' : '0')
        + (state.people     ? '1' : '0')
-       + (state.music      ? '1' : '0');
+       + '0'; // Music notes are handled by HTML overlay, so ignore for base image
 }
 
 function paint() {
