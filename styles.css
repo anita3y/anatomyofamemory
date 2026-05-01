@@ -76,7 +76,7 @@ body.atmosphere-on {
 }
 
 .enter-btn {
-  margin-top: 16px;
+  margin-top: 0;
   font-family: 'IM Fell English', Georgia, serif;
   font-style: italic;
   font-size: 15px;
